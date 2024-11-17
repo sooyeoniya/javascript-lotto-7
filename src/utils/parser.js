@@ -25,10 +25,23 @@ const parseAmountToCount = (amount) => {
   return amount / 1_000;
 }
 
+/**
+ * 1,000 단위 콤마 및 소수점 한 자리를 포함하여 반환한다.
+ * @param {number} number 
+ * @returns {number}
+ */
+const parseDecimalWithCommas = (number) => {
+  return number.toLocaleString('ko-KR', {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  });
+}
+
 const parser = {
   parseStringToNumber,
   parseStringToArray,
   parseAmountToCount,
+  parseDecimalWithCommas,
 }
 
 export default parser;

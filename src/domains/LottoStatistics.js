@@ -31,6 +31,26 @@ class LottoStatistics {
       this.#statistics.set(winningCount, { ...currentRank, count: currentRank.count + 1 });
     }
   }
+
+  /**
+   * 총 수익률을 반환한다.
+   * @param {number} lottoPurchase 
+   * @returns {number}
+   */
+  getEarningRate(lottoPurchase) {
+    const totalEarningAmount = this.#totalEarningAmount();
+    return totalEarningAmount / lottoPurchase * 100;
+  }
+
+  /**
+   * 전체 수익 금액을 반환한다.
+   * @returns {number}
+   */
+  #totalEarningAmount() {
+    let total = 0;
+    this.#statistics.forEach(({ count, amount }) => total += count * amount);
+    return total;
+  }
 }
 
 export default LottoStatistics;

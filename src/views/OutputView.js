@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import parser from '../utils/parser.js';
 
 const OutputView = {
   /**
@@ -31,7 +32,7 @@ const OutputView = {
    * @param {number} earningRate 
    */
   printEarningRate(earningRate) {
-    Console.print(`총 수익률은 ${earningRate}%입니다.`);
+    Console.print(`총 수익률은 ${parser.parseDecimalWithCommas(earningRate)}%입니다.`);
   },
 
   /**

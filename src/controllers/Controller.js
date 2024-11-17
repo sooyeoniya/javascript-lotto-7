@@ -22,7 +22,9 @@ class Controller {
     const lottoStatistics = new LottoStatistics();
     const lottoService = new LottoService(lotto, lottoStatistics);
     lottoService.calculateWinningStatistics(parsedWinningNumbers, parsedBonusNumber);
+
     OutputView.printWinningStatistics(lottoStatistics.getStatistics());
+    OutputView.printEarningRate(lottoStatistics.getEarningRate(parsedLottoPurchase));
   }
 
   async #validateLottoPurchaseAsync() {
