@@ -7,9 +7,9 @@ import validateBonusNumber from '../validations/validateBonusNumber.js';
 
 class Controller {
   async start() {
-    const lottoPurchase = await this.#validateLottoPurchaseAsync();
-    const winningNumbers = await this.#validateWinningNumbersAsync();
-    const bonusNumber = await this.#validateBonusNumbersAsync();
+    const parsedLottoPurchase = await this.#validateLottoPurchaseAsync();
+    const parsedWinningNumbers = await this.#validateWinningNumbersAsync();
+    const parsedBonusNumber = await this.#validateBonusNumbersAsync(parsedWinningNumbers);
     
   }
 
@@ -39,15 +39,16 @@ class Controller {
     }
   }
 
-  async #validateBonusNumbersAsync() {
+  async #validateBonusNumbersAsync(parsedWinningNumbers) {
     try {
       const bonusNumber = await InputView.readBonusNumber();
-      validateBonusNumber(bonusNumber);
+      const parsedBonusNumber = parser.parseStringToNumber(bonusNumber);
+      validateBonusNumber(parsedBonusNumber, parsedWinningNumbers);
 
-      return bonusNumber;
+      return parsedBonusNumber;
     } catch (error) {
       OutputView.printErrorMessage(error.message);
-      return await this.#validateWinningNumbersAsync();
+      return await this.#validateBonusNumbersAsync(parsedWinningNumbers);
     }
   }
 }

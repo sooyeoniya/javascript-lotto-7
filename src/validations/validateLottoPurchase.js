@@ -12,7 +12,7 @@ const validateInteger = (lottoPurchase) => {
 
 const validateRange = (lottoPurchase) => {
   if (lottoPurchase < 1_000 || lottoPurchase > 100_000) {
-    throw new Error('[ERROR] 로또 구입 금액은 1,000원 이상 100,000원 이하여야 합니다. 다시 입력해주세요');
+    throw new Error('[ERROR] 로또 구입 금액은 1,000원 이상 100,000원 이하여야 합니다. 다시 입력해주세요.');
   }
 }
 
@@ -22,6 +22,10 @@ const validateUnitOfThousand = (lottoPurchase) => {
   }
 }
 
+/**
+ * 로또 구입 금액 유효성 검증
+ * @param {number} lottoPurchase 
+ */
 const validateLottoPurchase = (lottoPurchase) => {
   validateNumber(lottoPurchase);
   validateInteger(lottoPurchase);
