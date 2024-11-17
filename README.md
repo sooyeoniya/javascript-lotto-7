@@ -55,7 +55,7 @@
   - [ ] 단위 테스트
     - [x] Lotto 클래스 테스트
     - [x] LottoIssue 클래스 테스트
-    - [ ] LottoStatistics 클래스 테스트
+    - [x] LottoStatistics 클래스 테스트
     - [ ] LottoService 클래스 테스트
 
 ### 기타
