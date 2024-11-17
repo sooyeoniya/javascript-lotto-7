@@ -14,11 +14,11 @@ const InputView = {
   },
 
   async readWinningNumbers() {
-    return await readPipe('당첨 번호를 입력해 주세요.\n');
+    return await readPipe('\n당첨 번호를 입력해 주세요.\n');
   },
 
   async readBonusNumber() {
-    return await readPipe('보너스 번호를 입력해 주세요.\n');
+    return await readPipe('\n보너스 번호를 입력해 주세요.\n');
   },
 }
 

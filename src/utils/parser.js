@@ -1,4 +1,3 @@
-
 /**
  * 문자열을 숫자로 반환한다.
  * @param {string} string 
@@ -17,10 +16,19 @@ const parseStringToArray = (string) => {
   return string.split(',').map((item) => Number(item.trim()));
 }
 
+/**
+ * 로또 구입 금액에 따라 발행할 로또 개수를 반환한다.
+ * @param {number} amount 
+ * @returns {number}
+ */
+const parseAmountToCount = (amount) => {
+  return amount / 1_000;
+}
+
 const parser = {
   parseStringToNumber,
   parseStringToArray,
-
+  parseAmountToCount,
 }
 
 export default parser;

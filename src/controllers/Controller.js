@@ -4,13 +4,18 @@ import parser from '../utils/parser.js';
 import validateLottoPurchase from '../validations/validateLottoPurchase.js';
 import validateWinningNumbers from '../validations/validateWinningNumbers.js';
 import validateBonusNumber from '../validations/validateBonusNumber.js';
+import Lotto from '../domains/Lotto.js';
 
 class Controller {
   async start() {
     const parsedLottoPurchase = await this.#validateLottoPurchaseAsync();
+    
+    const lotto = new Lotto();
+    lotto.issueLotto(parsedLottoPurchase);
+    OutputView.printIssuedLottoNumbers(lotto.getIssuedNumbers());
+
     const parsedWinningNumbers = await this.#validateWinningNumbersAsync();
     const parsedBonusNumber = await this.#validateBonusNumbersAsync(parsedWinningNumbers);
-    
   }
 
   async #validateLottoPurchaseAsync() {

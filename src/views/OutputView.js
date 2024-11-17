@@ -5,8 +5,12 @@ const OutputView = {
    * 사용자가 발행한 로또 번호를 출력한다.
    * @param {Array<number>} lottoNumbers 
    */
-  printIssuedLottoNumbers(lottoNumbers) {
-    Console.print(`[${lottoNumbers.join('')}]`);
+  printIssuedLottoNumbers(issuedNumbers) {
+    Console.print(`\n${issuedNumbers.length}개를 구매했습니다.`);
+
+    issuedNumbers.forEach((issuedNumber) => {
+      Console.print(`[${issuedNumber.join(', ')}]`);
+    });
   },
 
   printWinningStatisticsPrefix() {
