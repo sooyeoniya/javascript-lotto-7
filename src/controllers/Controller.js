@@ -16,9 +16,10 @@ class Controller {
   async #validateLottoPurchaseAsync() {
     try {
       const lottoPurchase = await InputView.readLottoPurchase();
-      validateLottoPurchase(lottoPurchase);
+      const parsedLottoPurchase = parser.parseStringToNumber(lottoPurchase);
+      validateLottoPurchase(parsedLottoPurchase);
 
-      return lottoPurchase;
+      return parsedLottoPurchase;
     } catch (error) {
       OutputView.printErrorMessage(error.message);
       return await this.#validateLottoPurchaseAsync();
