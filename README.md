@@ -69,5 +69,34 @@
 
 ## 🏛️ 프로젝트 구조
 ```
+__tests__
+├── ApplicationTest.js
+├── LottoIssueTest.js
+├── LottoServiceTest.js
+├── LottoStatisticsTest.js
+└── LottoTest.js
 
+src
+├── App.js
+├── index.js
+├── constants
+│   └── constants.js
+├── controllers
+│   └── Controller.js
+├── domains
+│   ├── Lotto.js
+│   ├── LottoIssue.js
+│   └── LottoStatistics.js
+├── services
+│   └── LottoService.js
+├── utils
+│   ├── testUtils.js
+│   └── parser.js
+├── validations
+│   ├── validateBonusNumber.js
+│   ├── validateLottoPurchase.js
+│   └── validateWinningNumbers.js
+└── views
+    ├── InputView.js
+    └── OutputView.js
 ```
