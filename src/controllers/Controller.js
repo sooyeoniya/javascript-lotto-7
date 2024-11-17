@@ -5,6 +5,8 @@ import validateLottoPurchase from '../validations/validateLottoPurchase.js';
 import validateWinningNumbers from '../validations/validateWinningNumbers.js';
 import validateBonusNumber from '../validations/validateBonusNumber.js';
 import Lotto from '../domains/Lotto.js';
+import LottoStatistics from '../domains/LottoStatistics.js';
+import LottoService from '../services/LottoService.js';
 
 class Controller {
   async start() {
@@ -16,6 +18,11 @@ class Controller {
 
     const parsedWinningNumbers = await this.#validateWinningNumbersAsync();
     const parsedBonusNumber = await this.#validateBonusNumbersAsync(parsedWinningNumbers);
+
+    const lottoStatistics = new LottoStatistics();
+    const lottoService = new LottoService(lotto, lottoStatistics);
+    lottoService.calculateWinningStatistics(parsedWinningNumbers, parsedBonusNumber);
+    
   }
 
   async #validateLottoPurchaseAsync() {

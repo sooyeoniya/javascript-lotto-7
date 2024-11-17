@@ -1,10 +1,10 @@
 
 
 class LottoStatistics {
-  /** @type {Map<number, number>} */ #winningStatistics;
+  /** @type {Map<number, { count: number, amount: number }>} */ #statistics;
 
   constructor() {
-    this.#winningStatistics = new Map([
+    this.#statistics = new Map([
       [3, { count: 0, amount: 5_000 }],           // 3개 일치
       [4, { count: 0, amount: 50_000 }],          // 4개 일치
       [5, { count: 0, amount: 1_500_000 }],       // 5개 일치
@@ -13,7 +13,24 @@ class LottoStatistics {
     ]);
   }
 
-  
+  /**
+   * 전체 당첨 통계를 반환한다.
+   * @returns {Map<number, { count: number, amount: number }>}
+   */
+  getStatistics() {
+    return this.#statistics;
+  }
+
+  /**
+   * 해당 일치 개수의 당첨 횟수를 1 증가시킨다.
+   * @param {number} winningCount 
+   */
+  setRankCount(winningCount) {
+    if (this.#statistics.has(winningCount)) {
+      const currentRank = this.#statistics.get(winningCount);
+      this.#statistics.set(winningCount, { ...currentRank, count: currentRank.count + 1 });
+    }
+  }
 }
 
 export default LottoStatistics;
