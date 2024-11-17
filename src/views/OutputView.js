@@ -32,6 +32,14 @@ const OutputView = {
   printEarningRate(earningRate) {
     Console.print(`총 수익률은 ${earningRate}%입니다.`);
   },
+
+  /**
+   * 에러 메시지를 출력한다.
+   * @param {string} errorMessage 
+   */
+  printErrorMessage(errorMessage) {
+    Console.print(errorMessage);
+  },
 }
 
 export default OutputView;

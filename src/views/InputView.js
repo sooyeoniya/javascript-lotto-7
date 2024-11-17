@@ -13,7 +13,7 @@ const InputView = {
     return await readPipe('구입금액을 입력해 주세요.\n');
   },
 
-  async readWinningNumber() {
+  async readWinningNumbers() {
     return await readPipe('당첨 번호를 입력해 주세요.\n');
   },
 
