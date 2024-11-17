@@ -1,12 +1,12 @@
-import Lotto from '../domains/Lotto.js';
+import LottoIssue from '../domains/LottoIssue.js';
 import LottoStatistics from '../domains/LottoStatistics.js';
 
 class LottoService {
-  /** @type {Lotto} */ #lotto;
+  /** @type {LottoIssue} */ #lottoIssue;
   /** @type {LottoStatistics} */ #lottoStatistics;
 
-  constructor(lotto, lottoStatistics) {
-    this.#lotto = lotto;
+  constructor(lottoIssue, lottoStatistics) {
+    this.#lottoIssue = lottoIssue;
     this.#lottoStatistics = lottoStatistics;
   }
 
@@ -16,7 +16,7 @@ class LottoService {
    * @param {number} bonusNumber 
    */
   calculateWinningStatistics(winningNumbers, bonusNumber) {
-    this.#lotto.getIssuedNumbers().map((issuedNumber) => {
+    this.#lottoIssue.getIssuedNumbers().map((issuedNumber) => {
       let winningCount = this.#matchWinningNumbersCount(issuedNumber, winningNumbers);
       if (winningCount === 5) winningCount = this.#matchBonusNumber(issuedNumber, bonusNumber);
       this.#lottoStatistics.setRankCount(winningCount);

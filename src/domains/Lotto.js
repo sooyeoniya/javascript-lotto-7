@@ -1,27 +1,22 @@
-import parser from '../utils/parser.js';
-import { Random } from '@woowacourse/mission-utils';
+import validateWinningNumbers from '../validations/validateWinningNumbers.js';
 
+/**
+ * 과제에서 미리 주어진 LottoTest의 테스트 케이스에 맞춰 Lotto 클래스에 유효성 검사를 진행하도록 함
+ */
 class Lotto {
-  /** @type {Array<Array<number>>} */ #issuedNumbers = [];
+  /** @type {Array<number>} */ #winningNumbers;
 
-  /**
-   * 랜덤으로 발행된 로또 번호들을 반환한다.
-   * @returns {Array<Array<number>>}
-   */
-  getIssuedNumbers() {
-    return this.#issuedNumbers;
+  constructor(winningNumbers) {
+    validateWinningNumbers(winningNumbers);
+    this.#winningNumbers = winningNumbers;
   }
 
   /**
-   * 로또 구입 금액에 따라 그 개수만큼 로또를 발행하여 #issuedNumbers에 저장한다.
-   * @param {number} lottoPurchase 
+   * 로또 당첨 번호를 반환한다.
+   * @returns {Array<number>}
    */
-  issueLotto(lottoPurchase) {
-    const issueCount = parser.parseAmountToCount(lottoPurchase);
-    for (let count = 0; count < issueCount; count++) {
-      const issuedNumber = Random.pickUniqueNumbersInRange(1, 45, 6);
-      this.#issuedNumbers.push(issuedNumber);
-    }
+  getWinningNumbers() {
+    return this.#winningNumbers;
   }
 }
 
