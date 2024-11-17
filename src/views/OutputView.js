@@ -13,20 +13,17 @@ const OutputView = {
     });
   },
 
-  printWinningStatisticsPrefix() {
-    Console.print('당첨 통계\n---\n');
-  },
-
   /**
    * 각 로또 당첨 등수 별 당첨 개수를 출력한다.
-   * @param {Map<number, number>} winningStatistics 
+   * @param {Map<number, { count: number, amount: number }>} statistics 
    */
-  printWinningStatistics(winningStatistics) {
-    // Console.print(`3개 일치 (5,000원) - ${winningStatistics.get(3)}개`);
-    // Console.print(`4개 일치 (50,000원) - ${winningStatistics.get(4)}개`);
-    // Console.print(`5개 일치 (1,500,000원) - ${winningStatistics.get(5)}개`);
-    // Console.print(`5개 일치, 보너스 볼 일치 (30,000,000원) - ${winningStatistics.get(5.5)}개`);
-    // Console.print(`6개 일치 (2,000,000,000원) - ${winningStatistics.get(6)}개')`);
+  printWinningStatistics(statistics) {
+    Console.print('\n당첨 통계\n---');
+    Console.print(`3개 일치 (5,000원) - ${statistics.get(3).count}개`);
+    Console.print(`4개 일치 (50,000원) - ${statistics.get(4).count}개`);
+    Console.print(`5개 일치 (1,500,000원) - ${statistics.get(5).count}개`);
+    Console.print(`5개 일치, 보너스 볼 일치 (30,000,000원) - ${statistics.get(5.5).count}개`);
+    Console.print(`6개 일치 (2,000,000,000원) - ${statistics.get(6).count}개)`);
   },
 
   /**

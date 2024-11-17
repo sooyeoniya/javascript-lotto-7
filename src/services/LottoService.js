@@ -19,7 +19,6 @@ class LottoService {
     this.#lotto.getIssuedNumbers().map((issuedNumber) => {
       let winningCount = this.#matchWinningNumbersCount(issuedNumber, winningNumbers);
       if (winningCount === 5) winningCount = this.#matchBonusNumber(issuedNumber, bonusNumber);
-      console.log(winningCount);
       this.#lottoStatistics.setRankCount(winningCount);
     });
   }
