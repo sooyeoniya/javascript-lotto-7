@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from '../constants/constants.js';
+import { ERROR_MESSAGES, RANDOM_NUM } from '../constants/constants.js';
 
 const validateNumber = (winningNumbers) => {
   const isNumber = (number) => isNaN(number);
@@ -15,13 +15,13 @@ const validateInteger = (winningNumbers) => {
 }
 
 const validateCount = (winningNumbers) => {
-  if (winningNumbers.length !== 6) {
+  if (winningNumbers.length !== RANDOM_NUM.COUNT) {
     throw new Error(ERROR_MESSAGES.WINNING_NUMBERS.COUNT);
   }
 }
 
 const validateRange = (winningNumbers) => {
-  const isRangeValid = (number) => number < 1 || number > 45;
+  const isRangeValid = (number) => number < RANDOM_NUM.MIN || number > RANDOM_NUM.MAX;
   if (winningNumbers.some(isRangeValid)) {
     throw new Error(ERROR_MESSAGES.WINNING_NUMBERS.RANGE);
   }

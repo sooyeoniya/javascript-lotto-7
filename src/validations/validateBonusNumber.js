@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from '../constants/constants.js';
+import { ERROR_MESSAGES, RANDOM_NUM } from '../constants/constants.js';
 
 const validateNumber = (bonusNumber) => {
   if (isNaN(bonusNumber)) {
@@ -13,7 +13,7 @@ const validateInteger = (bonusNumber) => {
 }
 
 const validateRange = (bonusNumber) => {
-  if (bonusNumber < 1 || bonusNumber > 45) {
+  if (bonusNumber < RANDOM_NUM.MIN || bonusNumber > RANDOM_NUM.MAX) {
     throw new Error(ERROR_MESSAGES.BONUS_NUMBER.RANGE);
   }
 }

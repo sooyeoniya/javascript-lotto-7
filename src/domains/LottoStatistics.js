@@ -1,15 +1,15 @@
-
+import { WINNING_NUMBERS, WINNING_AMOUNT } from '../constants/constants.js';
 
 class LottoStatistics {
   /** @type {Map<number, { count: number, amount: number }>} */ #statistics;
 
   constructor() {
     this.#statistics = new Map([
-      [3, { count: 0, amount: 5_000 }],           // 3개 일치
-      [4, { count: 0, amount: 50_000 }],          // 4개 일치
-      [5, { count: 0, amount: 1_500_000 }],       // 5개 일치
-      [5.5, { count: 0, amount: 30_000_000 }],    // 5개 + 보너스 일치
-      [6, { count: 0, amount: 2_000_000_000 }],   // 6개 일치
+      [WINNING_NUMBERS.THREE, { count: 0, amount: WINNING_AMOUNT[WINNING_NUMBERS.THREE] }],           // 3개 일치
+      [WINNING_NUMBERS.FOUR, { count: 0, amount: WINNING_AMOUNT[WINNING_NUMBERS.FOUR] }],             // 4개 일치
+      [WINNING_NUMBERS.FIVE, { count: 0, amount: WINNING_AMOUNT[WINNING_NUMBERS.FIVE] }],             // 5개 일치
+      [WINNING_NUMBERS.FIVE_BOUNS, { count: 0, amount: WINNING_AMOUNT[WINNING_NUMBERS.FIVE_BOUNS] }], // 5개 + 보너스 일치
+      [WINNING_NUMBERS.SIX, { count: 0, amount: WINNING_AMOUNT[WINNING_NUMBERS.SIX] }],               // 6개 일치
     ]);
   }
 

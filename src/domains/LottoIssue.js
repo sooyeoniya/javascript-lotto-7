@@ -1,5 +1,6 @@
 import parser from '../utils/parser.js';
 import { Random } from '@woowacourse/mission-utils';
+import { RANDOM_NUM } from '../constants/constants.js';
 
 class LottoIssue {
   /** @type {Array<Array<number>>} */ #issuedNumbers = [];
@@ -19,7 +20,7 @@ class LottoIssue {
   issueLotto(lottoPurchase) {
     const issueCount = parser.parseAmountToCount(lottoPurchase);
     for (let count = 0; count < issueCount; count++) {
-      const issuedNumber = Random.pickUniqueNumbersInRange(1, 45, 6);
+      const issuedNumber = Random.pickUniqueNumbersInRange(RANDOM_NUM.MIN, RANDOM_NUM.MAX, RANDOM_NUM.COUNT);
       this.#issuedNumbers.push(issuedNumber);
     }
   }

@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import { INPUT_MESSAGES } from '../constants/constants.js';
 
 const readPipe = (promptMessage) => {
   try {
@@ -10,15 +11,15 @@ const readPipe = (promptMessage) => {
 
 const InputView = {
   async readLottoPurchase() {
-    return await readPipe('구입금액을 입력해 주세요.\n');
+    return await readPipe(INPUT_MESSAGES.LOTTO_PURCHASE);
   },
 
   async readWinningNumbers() {
-    return await readPipe('\n당첨 번호를 입력해 주세요.\n');
+    return await readPipe(INPUT_MESSAGES.WINNING_NUMBERS);
   },
 
   async readBonusNumber() {
-    return await readPipe('\n보너스 번호를 입력해 주세요.\n');
+    return await readPipe(INPUT_MESSAGES.BONUS_NUMBER);
   },
 }
 

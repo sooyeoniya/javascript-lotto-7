@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import parser from '../utils/parser.js';
+import { STATISTICS_PREFIX, OUTPUT_MESSAGES, WINNING_NUMBERS } from '../constants/constants.js';
 
 const OutputView = {
   /**
@@ -19,12 +20,12 @@ const OutputView = {
    * @param {Map<number, { count: number, amount: number }>} statistics 
    */
   printWinningStatistics(statistics) {
-    Console.print('\n당첨 통계\n---');
-    Console.print(`3개 일치 (5,000원) - ${statistics.get(3).count}개`);
-    Console.print(`4개 일치 (50,000원) - ${statistics.get(4).count}개`);
-    Console.print(`5개 일치 (1,500,000원) - ${statistics.get(5).count}개`);
-    Console.print(`5개 일치, 보너스 볼 일치 (30,000,000원) - ${statistics.get(5.5).count}개`);
-    Console.print(`6개 일치 (2,000,000,000원) - ${statistics.get(6).count}개)`);
+    Console.print(STATISTICS_PREFIX);
+    Console.print(`${OUTPUT_MESSAGES[WINNING_NUMBERS.THREE]}${statistics.get(WINNING_NUMBERS.THREE).count}개`);
+    Console.print(`${OUTPUT_MESSAGES[WINNING_NUMBERS.FOUR]}${statistics.get(WINNING_NUMBERS.FOUR).count}개`);
+    Console.print(`${OUTPUT_MESSAGES[WINNING_NUMBERS.FIVE]}${statistics.get(WINNING_NUMBERS.FIVE).count}개`);
+    Console.print(`${OUTPUT_MESSAGES[WINNING_NUMBERS.FIVE_BOUNS]}${statistics.get(WINNING_NUMBERS.FIVE_BOUNS).count}개`);
+    Console.print(`${OUTPUT_MESSAGES[WINNING_NUMBERS.SIX]}${statistics.get(WINNING_NUMBERS.SIX).count}개)`);
   },
 
   /**

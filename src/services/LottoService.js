@@ -1,5 +1,6 @@
 import LottoIssue from '../domains/LottoIssue.js';
 import LottoStatistics from '../domains/LottoStatistics.js';
+import { WINNING_NUMBERS } from '../constants/constants.js';
 
 class LottoService {
   /** @type {LottoIssue} */ #lottoIssue;
@@ -18,7 +19,7 @@ class LottoService {
   calculateWinningStatistics(winningNumbers, bonusNumber) {
     this.#lottoIssue.getIssuedNumbers().map((issuedNumber) => {
       let winningCount = this.#matchWinningNumbersCount(issuedNumber, winningNumbers);
-      if (winningCount === 5) winningCount = this.#matchBonusNumber(issuedNumber, bonusNumber);
+      if (winningCount === WINNING_NUMBERS.FIVE) winningCount = this.#matchBonusNumber(issuedNumber, bonusNumber);
       this.#lottoStatistics.setRankCount(winningCount);
     });
   }
@@ -42,8 +43,8 @@ class LottoService {
    */
   #matchBonusNumber(issuedNumber, bonusNumber) {
     const isMatch = (number) => number === bonusNumber;
-    if (issuedNumber.some(isMatch)) return 5.5;
-    return 5;
+    if (issuedNumber.some(isMatch)) return WINNING_NUMBERS.FIVE_BOUNS;
+    return WINNING_NUMBERS.FIVE;
   }
 }
 

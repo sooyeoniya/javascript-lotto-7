@@ -1,3 +1,4 @@
+import { LOTTO_AMOUNT } from '../constants/constants.js';
 /**
  * 문자열을 숫자로 반환한다.
  * @param {string} string 
@@ -22,7 +23,7 @@ const parseStringToArray = (string) => {
  * @returns {number}
  */
 const parseAmountToCount = (amount) => {
-  return amount / 1_000;
+  return amount / LOTTO_AMOUNT.MIN;
 }
 
 /**

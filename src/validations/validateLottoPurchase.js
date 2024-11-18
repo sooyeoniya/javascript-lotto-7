@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from '../constants/constants.js';
+import { ERROR_MESSAGES, LOTTO_AMOUNT } from '../constants/constants.js';
 
 const validateNumber = (lottoPurchase) => {
   if (isNaN(lottoPurchase)) {
@@ -13,13 +13,13 @@ const validateInteger = (lottoPurchase) => {
 }
 
 const validateRange = (lottoPurchase) => {
-  if (lottoPurchase < 1_000 || lottoPurchase > 100_000) {
+  if (lottoPurchase < LOTTO_AMOUNT.MIN || lottoPurchase > LOTTO_AMOUNT.MAX) {
     throw new Error(ERROR_MESSAGES.LOTTO_PURCHASE.RANGE);
   }
 }
 
 const validateUnitOfThousand = (lottoPurchase) => {
-  if (lottoPurchase % 1_000 !== 0) {
+  if (lottoPurchase % LOTTO_AMOUNT.MIN !== 0) {
     throw new Error(ERROR_MESSAGES.LOTTO_PURCHASE.UNIT_OF_THOUSAND);
   }
 }
