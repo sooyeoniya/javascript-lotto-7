@@ -1,34 +1,36 @@
+import { ERROR_MESSAGES } from '../constants/constants.js';
+
 const validateNumber = (winningNumbers) => {
   const isNumber = (number) => isNaN(number);
   if (winningNumbers.some(isNumber)) {
-    throw new Error('[ERROR] 당첨 번호가 숫자가 아닙니다. 다시 입력해주세요.');
+    throw new Error(ERROR_MESSAGES.WINNING_NUMBERS.NUMBER);
   }
 }
 
 const validateInteger = (winningNumbers) => {
   const isInteger = (number) => !Number.isInteger(number);
   if (winningNumbers.some(isInteger)) {
-    throw new Error('[ERROR] 당첨 번호가 정수가 아닙니다. 다시 입력해주세요.');
+    throw new Error(ERROR_MESSAGES.WINNING_NUMBERS.INTEGER);
   }
 }
 
 const validateCount = (winningNumbers) => {
   if (winningNumbers.length !== 6) {
-    throw new Error('[ERROR] 당첨 번호는 6개여야 합니다. 다시 입력해주세요.');
+    throw new Error(ERROR_MESSAGES.WINNING_NUMBERS.COUNT);
   }
 }
 
 const validateRange = (winningNumbers) => {
   const isRangeValid = (number) => number < 1 || number > 45;
   if (winningNumbers.some(isRangeValid)) {
-    throw new Error('[ERROR] 당첨 번호는 1 이상 45 이하의 숫자여야 합니다. 다시 입력해주세요.');
+    throw new Error(ERROR_MESSAGES.WINNING_NUMBERS.RANGE);
   }
 }
 
 const validateDuplication = (winningNumbers) => {
   const winningNumbersSet = new Set(winningNumbers);
   if (winningNumbers.length !== winningNumbersSet.size) {
-    throw new Error('[ERROR] 당첨 번호 중에 중복되는 숫자가 있습니다. 다시 입력해주세요.');
+    throw new Error(ERROR_MESSAGES.WINNING_NUMBERS.DUPLICATION);
   }
 }
 
